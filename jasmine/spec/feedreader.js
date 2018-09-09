@@ -66,7 +66,7 @@ $(function() {
          */
         //menus visibilty can be found out using presence of menu-hidden class in body tag
         
-        it("Menu is hidden by default",function(){
+        it("hidden by default",function(){
             expect($("body").hasClass("menu-hidden")).toBe(true);
           });
 
@@ -75,7 +75,7 @@ $(function() {
           * should have two expectations: does the menu display when
           * clicked and does it hide when clicked again.
           */
-         it("Menu toggles view on click",function(){
+         it("toggles view on click",function(){
              //click and test whther the menu is not hidden
              $(".menu-icon-link").trigger("click");                //on first click 
              expect($("body").hasClass("menu-hidden")).toBe(false);//meny should be revealed
