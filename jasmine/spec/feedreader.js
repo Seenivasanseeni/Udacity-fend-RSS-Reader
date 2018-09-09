@@ -64,17 +64,28 @@ $(function() {
          * the CSS to determine how we're performing the
          * hiding/showing of the menu element.
          */
+        //menus visibilty can be found out using presence of menu-hidden class in body tag
+        
         it("Menu is hidden by default",function(){
-            var menu=$(".slide-menu")[0];
-            var transform=window.getComputedStyle(menu).getPropertyValue("transform");
-            expect(transform).toBe("matrix(1, 0, 0, 1, -192, 0)"); //transform values for hidden element
-        });
+            expect($("body").hasClass("menu-hidden")).toBe(true);
+          });
 
          /* TODO: Write a test that ensures the menu changes
           * visibility when the menu icon is clicked. This test
           * should have two expectations: does the menu display when
           * clicked and does it hide when clicked again.
           */
+         it("Menu toggles view on click",function(){
+             //click and test whther the menu is not hidden
+             $(".menu-icon-link").trigger("click");                //on first click 
+             expect($("body").hasClass("menu-hidden")).toBe(false);//meny should be revealed
+
+             //click and test whether the meny is hidden
+             $(".menu-icon-link").trigger("click");                //on first click 
+             expect($("body").hasClass("menu-hidden")).toBe(true);//meny should be revealed
+             
+            
+         })
     });
     describe("Initial Entries",function(){
     /* TODO: Write a new test suite named "Initial Entries" */
