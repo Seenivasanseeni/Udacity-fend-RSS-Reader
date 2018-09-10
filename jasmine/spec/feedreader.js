@@ -97,7 +97,7 @@ $(function() {
          * the use of Jasmine's beforeEach and asynchronous done() function.
          */
         beforeEach(function(done){
-            loadFeed(1,done);
+            loadFeed(0,done);
         });
 
         it("atleast one entry element inside feed container",function(done){
@@ -115,14 +115,17 @@ $(function() {
          * Remember, loadFeed() is asynchronous.
          */
         var beforeContent;
+        var afterContent;
          beforeEach(function(done){
             beforeContent=$(".feed .entry")[0].innerText;
-            loadFeed(2,done);
+            loadFeed(1,function(){
+                afterContent=$(".feed .entry")[0].innerText;
+                done();
+            });
         });
 
         it("loadFeed changes Contents",function(done){
-            var aftercontent=$(".feed .entry")[0].innerText;
-            expect(beforeContent).not.toBe(aftercontent);
+            expect(beforeContent).not.toBe(afterContent);
             done();
         })
     });
