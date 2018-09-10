@@ -47,5 +47,6 @@ Review the Feed Reader Testing [Project Rubric](https://review.udacity.com/#!/pr
 20. When complete - all of your tests should pass. 
 21. Write a README file detailing all steps required to successfully run the application. If you have added additional tests (for Udacious Test Coverage),  provide documentation for what these future features are and what the tests are checking for.
 
-#Final Note
+# Final Note
+
 All the Above tests are done . You can use the application by visiting index.html with the broswer. Jasmine will run the tests and display the result.
