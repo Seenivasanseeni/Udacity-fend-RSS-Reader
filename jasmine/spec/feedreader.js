@@ -64,11 +64,12 @@ $(function() {
           */
          it("toggles view on click",function(){
              //click and test whther the menu is not hidden
-             $(".menu-icon-link").trigger("click");                //on first click 
+             var menuIcon=$(".menu-icon-link");
+             menuIcon.trigger("click");                //on first click 
              expect($("body").hasClass("menu-hidden")).toBe(false);//meny should be revealed
 
              //click and test whether the meny is hidden
-             $(".menu-icon-link").trigger("click");                //on second click 
+             menuIcon.trigger("click");                //on second click 
              expect($("body").hasClass("menu-hidden")).toBe(true);//menu should be hidden
              
             
@@ -87,7 +88,6 @@ $(function() {
         it("atleast one entry element inside feed container",function(done){
             expect($(".feed .entry").length>0).toBe(true);
             done();
-         
         });
 
     });
@@ -98,11 +98,14 @@ $(function() {
         var beforeContent;
         var afterContent;
          beforeEach(function(done){
-            beforeContent=$(".feed .entry")[0].innerText;
-            loadFeed(1,function(){
-                afterContent=$(".feed .entry")[0].innerText;
+            loadFeed(0,function(){
+                beforeContent=$(".feed .entry")[0].innerText;
                 done();
-            });
+                loadFeed(1,function(){
+                    afterContent=$(".feed .entry")[0].innerText;
+                    done();
+                });
+            }); 
         });
 
         it("loadFeed changes Contents",function(done){
